@@ -4,7 +4,7 @@ import ContactCard from './ContactCard';
 
 const ContactList = (props)=>{
     
-    console.log(props.contacts)
+    console.log(props)
 
     const renderContactList = props.contacts.map((contact)=>{
         return(
