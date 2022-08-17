@@ -28,17 +28,17 @@ function App() {
    
   // },[contacts])
  
-useEffect(()=>{
-    const retrieveContacts =  JSON.parse(localStorage.getItem('contacts'))
+  useEffect(() => {
+    const retriveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (retriveContacts) setContacts(retriveContacts);
+  }, []);
 
-    if(retrieveContacts)setContacts(retrieveContacts)
-
-},[])
-
-useEffect(()=>{
-    localStorage.setItem('contacts',JSON.stringify(contacts))
-},[contacts])
-
+  useEffect(() =>{
+    if(contacts.length > 0)
+{
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
+}
+}, [contacts]);
 
 
   return (
