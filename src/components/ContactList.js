@@ -4,10 +4,6 @@ import ContactCard from "./ContactCard";
 import { Link } from "react-router-dom";
 
 const ContactList = (props) => {
-  const deleteContactHandler = (id) => {
-    props.getContactId(id);
-  };
-
   const { removeContactHandler, contacts } = props;
   // const contacts = [{id:'1',name:'adam',email:'adam@adam'}]
 
