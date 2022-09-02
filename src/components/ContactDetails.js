@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const ContactCard = (props) => {
+import user from "../images/user.png";
+
+const ContactDetails = (props) => {
   const { id, name, email } = props.contact;
   const { deleteHandler } = props;
   console.log(props);
@@ -22,4 +24,4 @@ const ContactCard = (props) => {
   );
 };
 
-export default ContactCard;
+export default ContactDetails;
