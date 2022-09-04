@@ -1,25 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import user from "../images/user.png";
+import { useLocation } from "react-router-dom";
+//import user from "../images/user2.jpg";
 
 const ContactDetails = (props) => {
-  const { id, name, email } = props.contact;
-  const { deleteHandler } = props;
-  console.log(props);
+  const location = useLocation();
+  console.log(location.state.contact);
+  const { name, email } = location.state.contact;
 
   return (
-    <div className="item" style={{ display: "flex", alignItems: "center" }}>
-      <div className="content" style={{ width: "99%" }}>
-        <Link to={`/contact/${id}`}>
+    <div className="item margin">
+      <div className="ui card centered">
+        <div className="image">
+          <img src={require("../images/user2.jpg").default} />
+        </div>
+        <div className="content">
           <div className="header">{name}</div>
-          <div>{email}</div>
-        </Link>
+          <div className="description">{email}</div>
+        </div>
       </div>
-      <i
-        className="trash alternate outline icon"
-        style={{ width: "1%", color: "red" }}
-        onClick={() => deleteHandler(id)}
-      ></i>
     </div>
   );
 };

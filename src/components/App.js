@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import AddContact from "./AddContact";
 import ContactList from "./ContactList";
+import ContactDetails from "./ContactDetails";
 
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
@@ -52,8 +53,7 @@ function App() {
             path="/add"
             element={<AddContact addContactHandler={addContactHandler} />}
           />
-          {/* <AddContact addContactHandler={addContactHandler}/>
-        <ContactList contacts={contacts} removeContactHandler={removeContactHandler} />  */}
+          <Route path="/contact/:id" element={<ContactDetails />} />
         </Routes>
       </Router>
     </div>

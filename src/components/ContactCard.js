@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 const ContactCard = (props) => {
   const { id, name, email } = props.contact;
   const { deleteHandler } = props;
@@ -8,7 +9,7 @@ const ContactCard = (props) => {
   return (
     <div className="item" style={{ display: "flex", alignItems: "center" }}>
       <div className="content" style={{ width: "99%" }}>
-        <Link to={`/contact/${id}`}>
+        <Link to={`/contact/${id}`} state={{ contact: props.contact }}>
           <div className="header">{name}</div>
           <div>{email}</div>
         </Link>
