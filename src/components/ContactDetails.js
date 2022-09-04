@@ -1,6 +1,6 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-//import user from "../images/user2.jpg";
+import { useLocation, Link } from "react-router-dom";
+import user from "../images/user2.jpg";
 
 const ContactDetails = (props) => {
   const location = useLocation();
@@ -11,12 +11,19 @@ const ContactDetails = (props) => {
     <div className="item margin">
       <div className="ui card centered">
         <div className="image">
-          <img src={require("../images/user2.jpg").default} />
+          <img src={user} height={100} width={100} />
         </div>
         <div className="content">
           <div className="header">{name}</div>
           <div className="description">{email}</div>
         </div>
+      </div>
+      <div className="center">
+        <Link to="/">
+          <button className="ui button blue center">
+            Back to contact list
+          </button>
+        </Link>
       </div>
     </div>
   );
