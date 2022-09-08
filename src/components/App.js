@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import api from "../api/contacts";
 import Header from "./Header";
 import AddContact from "./AddContact";
+import EditContact from "./EditContact";
 import ContactList from "./ContactList";
 import ContactDetails from "./ContactDetails";
 
@@ -19,7 +20,7 @@ function App() {
     return response.data;
   };
 
-  //Add contacts
+  //Add contact
   const addContactHandler = async (contact) => {
     const request = {
       id: uniqid(),
@@ -30,10 +31,23 @@ function App() {
     setContacts([...contacts, response.data]);
   };
 
+  //Edit contact
+  const editContactHandler = async (contact) => {
+    const request = {
+      id: uniqid(),
+      ...contact,
+    };
+
+    const response = await api.update("/contacts", request);
+    setContacts([...contacts, response.data]);
+  };
+
+  //Delete contact
   const removeContactHandler = async (id) => {
     await api.delete(`/contacts/${id}`);
 
     const newContactList = contacts.filter((contact) => contact.id !== id);
+
     setContacts(newContactList);
   };
 
@@ -62,12 +76,17 @@ function App() {
               <ContactList
                 contacts={contacts}
                 removeContactHandler={removeContactHandler}
+                editContactHandler={editContactHandler}
               />
             }
           />
           <Route
             path="/add"
             element={<AddContact addContactHandler={addContactHandler} />}
+          />
+          <Route
+            path="/edit"
+            element={<EditContact editContactHandler={editContactHandler} />}
           />
           <Route path="/contact/:id" element={<ContactDetails />} />
         </Routes>

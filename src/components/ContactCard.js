@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ContactCard = (props) => {
   const { id, name, email } = props.contact;
-  const { deleteHandler } = props;
+  const { deleteHandler, editHandler } = props;
   console.log(props);
 
   return (
@@ -16,9 +16,15 @@ const ContactCard = (props) => {
       </div>
       <i
         className="trash alternate outline icon"
-        style={{ width: "1%", color: "red" }}
+        style={{ width: "1%", color: "red", margin: "0 3rem 0 3rem" }}
         onClick={() => deleteHandler(id)}
       ></i>
+      <Link to="/edit" state={{ contact: props.contact }}>
+        <i
+          className="edit alternate outline icon"
+          style={{ width: "1%", color: "green" }}
+        ></i>
+      </Link>
     </div>
   );
 };

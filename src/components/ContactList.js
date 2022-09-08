@@ -4,7 +4,7 @@ import ContactCard from "./ContactCard";
 import { Link } from "react-router-dom";
 
 const ContactList = (props) => {
-  const { removeContactHandler, contacts } = props;
+  const { removeContactHandler, editContactHandler, contacts } = props;
   // const contacts = [{id:'1',name:'adam',email:'adam@adam'}]
 
   const renderContactList = contacts.map((contact) => {
@@ -13,6 +13,7 @@ const ContactList = (props) => {
         contact={contact}
         key={contact.id}
         deleteHandler={removeContactHandler}
+        editHandler={editContactHandler}
       ></ContactCard>
     );
   });
