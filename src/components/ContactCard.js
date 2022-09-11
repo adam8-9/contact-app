@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ContactCard = (props) => {
   const { id, name, email } = props.contact;
   const { deleteHandler, editHandler } = props;
-  console.log(props);
+  // console.log(props);
 
   return (
     <div className="item" style={{ display: "flex", alignItems: "center" }}>

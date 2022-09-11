@@ -33,13 +33,14 @@ function App() {
 
   //Edit contact
   const editContactHandler = async (contact) => {
-    const request = {
-      id: uniqid(),
-      ...contact,
-    };
-
-    const response = await api.update("/contacts", request);
-    setContacts([...contacts, response.data]);
+    const response = await api.put(`/contacts/${contact.id}`, contact);
+    //console.log(contact);
+    const { id } = response.data;
+    setContacts(
+      contacts.map((contact) => {
+        return contact.id === id ? { ...response.data } : contact;
+      })
+    );
   };
 
   //Delete contact

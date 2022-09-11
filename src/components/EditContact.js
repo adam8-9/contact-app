@@ -64,10 +64,20 @@ const EditContact = (props) => {
   //     const { id, email, name, redirect } = props.location.state.contact;
   //     console.log(id);
   //   }
-  const [state, setState] = useState({ name: "", email: "", redirect: false });
 
   const location = useLocation();
-  console.log(location);
+  //console.log(location.state.contact);
+  //console.log(props);
+
+  const { name, email, id, redirect } = location.state.contact;
+  const [state, setState] = useState({
+    name,
+    email,
+    id,
+    redirect,
+  });
+
+  //console.log(state);
 
   const edit = (e) => {
     e.preventDefault();
